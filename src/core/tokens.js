@@ -14,6 +14,7 @@ export const T = {
   // Sapphire (secondary accent — AI/data)
   sapphire: "#2A6FDB", sapphireDeep: "#14294D", sapphireSoft: "rgba(42,111,219,0.14)",
   ok: "#4CAF7D", warn: "#E0684B",
+  ink: "#14100A",                           // dark text on gold/ember surfaces
   fontDisplay: "'Cinzel',serif",           // engraved-stone temple display
   fontBody: "'Montserrat',system-ui,sans-serif",
   fontDeva: "'Tiro Devanagari Sanskrit',serif", // Sanskrit accents

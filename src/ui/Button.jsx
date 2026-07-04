@@ -18,7 +18,7 @@ export function Button({ children, onClick, variant = "primary", disabled, style
         opacity: disabled ? 0.45 : 1,
         border: isGhost ? `1px solid ${T.hair}` : "none",
         background: isGhost ? "transparent" : `linear-gradient(180deg, ${T.gold}, ${T.ember})`,
-        color: isGhost ? T.dim : "#14100A",
+        color: isGhost ? T.dim : T.ink,
         ...style,
       }}
     >

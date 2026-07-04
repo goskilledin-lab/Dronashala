@@ -132,9 +132,9 @@ export function StoreProvider({ children }) {
       try {
         const d = JSON.parse(r.result);
         if (!d || d.v !== 1) { log("Import failed — schema mismatch", "warn"); return; }
-        setProjects(d.projects || []); setAgents(d.agents || SEED_AGENTS);
-        setPrompts(d.prompts || SEED_PROMPTS); setNotes(d.notes || []);
-        setSettings(d.settings || DEFAULT_SETTINGS);
+        setProjects(d.projects || []); setAgents(d.agents ? [...d.agents] : [...SEED_AGENTS]);
+        setPrompts(d.prompts ? [...d.prompts] : [...SEED_PROMPTS]); setNotes(d.notes || []);
+        setSettings(d.settings ? { ...d.settings } : { ...DEFAULT_SETTINGS });
         setActivity(d.activity || []);
         log("Import complete", "ok");
       } catch { log("Import failed — invalid file", "warn"); }
@@ -142,8 +142,12 @@ export function StoreProvider({ children }) {
     r.readAsText(file);
   };
   const resetWorkspace = () => {
-    setProjects([]); setAgents(SEED_AGENTS); setPrompts(SEED_PROMPTS);
-    setNotes([]); setSettings(DEFAULT_SETTINGS); setActivity([]);
+    // Spread into fresh references — SEED_AGENTS/SEED_PROMPTS/DEFAULT_SETTINGS
+    // are shared module constants, so if state already equals one of them by
+    // reference, React bails out of the update and the persist effect never
+    // fires, silently skipping the localStorage write.
+    setProjects([]); setAgents([...SEED_AGENTS]); setPrompts([...SEED_PROMPTS]);
+    setNotes([]); setSettings({ ...DEFAULT_SETTINGS }); setActivity([]);
     log("Workspace reset", "warn");
   };
 

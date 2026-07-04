@@ -43,7 +43,10 @@ button {
   font: inherit;
 }
 
-/* §6.5: primary = faint gold glow on press; ghost hover/active = sapphire border. */
+/* §6.5: primary = faint gold glow on press; ghost hover/active = sapphire border.
+   Plain CSS (not a component) so these mirror tokens.js literally — inline
+   styles can't express :hover/:active, which is the one thing this file
+   exists for. gold=#F0C060, sapphire=#2A6FDB, text=#EDE6D6. */
 .btn-primary:active {
   box-shadow: 0 0 12px rgba(240, 192, 96, 0.5);
 }
