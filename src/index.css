@@ -1,0 +1,58 @@
+/* Self-hosted fonts (tech stack §1) — must render identically offline,
+   no Google Fonts CDN. Latin subset only: app content is English/Hinglish
+   (Latin script). @fontsource/tiro-devanagari-sanskrit is installed but
+   not imported yet — it's an optional decorative accent (§6.2) not used
+   by any component until a module actually needs a ॐ/द्रोण glyph, and
+   its devanagari subset alone is ~340KB we shouldn't precache unused. */
+@import "@fontsource/montserrat/latin-600.css";
+@import "@fontsource/montserrat/latin-700.css";
+@import "@fontsource/montserrat/latin-800.css";
+@import "@fontsource/cinzel/latin-600.css";
+@import "@fontsource/cinzel/latin-700.css";
+
+:root {
+  color-scheme: dark;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #07090D;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+button {
+  font: inherit;
+}
+
+/* §6.5: primary = faint gold glow on press; ghost hover/active = sapphire border.
+   Plain CSS (not a component) so these mirror tokens.js literally — inline
+   styles can't express :hover/:active, which is the one thing this file
+   exists for. gold=#F0C060, sapphire=#2A6FDB, text=#EDE6D6. */
+.btn-primary:active {
+  box-shadow: 0 0 12px rgba(240, 192, 96, 0.5);
+}
+
+.btn-ghost:hover,
+.btn-ghost:active {
+  border-color: #2A6FDB;
+  color: #EDE6D6;
+}
