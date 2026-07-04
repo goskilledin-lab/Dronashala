@@ -7,26 +7,9 @@ import { Eyebrow } from "../ui/Eyebrow.jsx";
 import { Empty } from "../ui/Empty.jsx";
 import { StageTrail } from "../ui/StageTrail.jsx";
 import { Button } from "../ui/Button.jsx";
+import { Chip } from "../ui/Chip.jsx";
 
 const STATUS_FILTERS = ["active", "paused", "done"];
-
-function Chip({ label, active, color, onClick }) {
-  const c = color || T.sapphire;
-  return (
-    <button
-      onClick={onClick}
-      style={{
-        fontFamily: T.fontBody, fontWeight: 600, fontSize: 11, padding: "7px 11px",
-        borderRadius: T.rSm, cursor: "pointer",
-        background: active ? c + "22" : "transparent",
-        border: `1px solid ${active ? c : T.hair}`,
-        color: active ? c : T.dim,
-      }}
-    >
-      {label}
-    </button>
-  );
-}
 
 export function Pipeline() {
   const st = useStore();
