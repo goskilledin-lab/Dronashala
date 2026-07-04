@@ -5,6 +5,8 @@ import { T } from "../core/tokens.js";
 import { Header } from "./Header.jsx";
 import { BottomNav } from "./BottomNav.jsx";
 import { Toast } from "./Toast.jsx";
+import { ModalRouter } from "../features/ModalRouter.jsx";
+import { CommandPalette } from "../features/CommandPalette.jsx";
 
 function Shell() {
   const st = useStore();
@@ -34,7 +36,8 @@ function Shell() {
       </div>
       <BottomNav />
       <Toast />
-      {/* CommandPalette + ModalRouter wire in at Step 8 */}
+      <ModalRouter />
+      <CommandPalette />
     </div>
   );
 }
